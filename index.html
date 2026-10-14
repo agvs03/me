@@ -633,8 +633,8 @@ const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAl
 const logoHTML = (k, size) => isBrand(k) ? `<img src="logo-${BRAND[k]}.svg" alt="" width="${size}" height="${size}" loading="lazy">` : (CONCEPT[k] || CONCEPT.micro);
 
 /* reveal */
-const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target); } }), {rootMargin:'0px 0px -10% 0px', threshold:.12});
-function observeReveal(){ $$('.rv,.rv-mask,.ptable').forEach(el => ro.observe(el)); }
+const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target); } }), {rootMargin:'0px 0px -4% 0px', threshold:.05});
+function observeReveal(){ $$('.rv,.rv-mask,.ptable').forEach(el => ro.observe(el)); requestAnimationFrame(()=>$$('#hero .rv,#hero .rv-mask').forEach(el=>el.classList.add('is-in'))); }
 
 /* ---------------- nav ---------------- */
 const nav = $('#nav'), prog = $('#prog'), ind = $('#ind'), links = $$('#links a');
