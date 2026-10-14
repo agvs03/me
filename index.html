@@ -190,9 +190,22 @@ p{margin:0}
 .inspector .used{margin-top:22px;width:100%;text-align:left}
 .inspector .used p{font-family:var(--mono);font-size:11px;color:var(--mute);margin-bottom:8px}
 .inspector .used ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
-.inspector .used li{padding:8px 12px;border-radius:10px;background:var(--paper)}
+.inspector .used li{padding:9px 12px;border-radius:10px;background:var(--paper);display:grid;gap:2px}
+.inspector .used li b{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.inspector .used li span{font-size:13.5px;line-height:1.4}
 .concept{stroke:var(--ink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:1060px){.skills-layout{grid-template-columns:1fr}.inspector{position:relative;top:0;min-height:0}}
+@media (max-width:1060px){
+  .skills-layout{grid-template-columns:1fr}
+  .inspector{order:-1;position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:5;min-height:0;padding:14px 16px;display:grid;grid-template-columns:64px 1fr;column-gap:14px;align-items:center;text-align:left;box-shadow:inset 0 0 0 1px var(--line),0 18px 30px -24px rgba(0,0,0,.35)}
+  .inspector .logo{width:64px;height:64px;margin:0;border-radius:16px;grid-row:span 2}
+  .inspector .logo img,.inspector .logo svg{width:46px;height:46px}
+  .inspector h3{font-size:22px;align-self:end}
+  .inspector .fam{margin-top:2px;align-self:start}
+  .inspector .used{grid-column:1/-1;margin-top:12px;max-height:22svh;overflow:auto}
+  .inspector .used p{display:none}
+  .inspector .used ul{gap:4px}
+  .inspector .used li{padding:6px 10px}
+}
 @media (max-width:700px){.ptable{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
 /* work */
@@ -403,7 +416,7 @@ footer a:hover{color:var(--ink)}
               <p class="idname">Sudheer Arikatla</p>
               <p class="idrole">Senior Backend Engineer</p>
               <div class="rows">
-                <div><span>ID No.</span><span>SA-2019</span></div>
+                <div><span>Building since</span><span>2019</span></div>
                 <div><span>Dept.</span><span>Backend &amp; Integrations</span></div>
                 <div><span>Graduated</span><span>M.S. CS, 2023</span></div>
               </div>
@@ -551,58 +564,53 @@ const CONCEPT = {
   mockito:'<svg viewBox="0 0 48 48" class="concept"><rect x="8" y="10" width="32" height="28" rx="5"/><path d="M16 22h6M26 22h6M18 30h12"/></svg>',
   prompt:'<svg viewBox="0 0 48 48" class="concept"><path d="M8 12h32v20H22l-8 7v-7H8z"/><path d="M16 20h16M16 26h10"/></svg>'
 };
-const W = {target:'Target — supply chain microservices', charter:'Charter — transactional services', hdfc:'Deloitte / HDFC Bank — banking platform', aveva:'Aveva — industrial data platform'};
+const T='Target', C='Charter', H='HDFC Bank', A='Aveva', P='Personal project';
 const SKILLS = [
- ['java','Ja','Java','Languages',[W.target,W.charter,W.hdfc,W.aveva]],
- ['kotlin','Kt','Kotlin','Languages',[W.target,W.charter,W.hdfc,W.aveva]],
- ['sql','Sq','SQL','Languages',[W.target,W.charter,W.hdfc]],
- ['python','Py','Python','Languages',['GitHub — fraud, churn & job-agent projects']],
- ['typescript','Ts','TypeScript','Languages',[W.target,W.charter,W.aveva]],
- ['javascript','Js','JavaScript','Languages',['Frontend work across roles']],
- ['scala','Sc','Scala','Languages',['Listed in résumé skills']],
- ['bash','Sh','Shell','Languages',['Scripting & CI pipelines']],
- ['spring','Sb','Spring Boot','Backend',[W.target,W.charter,W.hdfc,W.aveva]],
- ['micro','Ms','Microservices','Backend',[W.target,W.charter,W.aveva]],
- ['rest','Ra','REST APIs','Backend',[W.target,W.charter,W.hdfc,W.aveva]],
- ['hibernate','Hb','Hibernate','Backend',[W.target]],
- ['graphql','Gq','GraphQL','Backend',['Résumé: REST/GraphQL consumption']],
- ['swagger','Sw','OpenAPI','Backend',[W.target]],
- ['fastapi','Fa','FastAPI','Backend',['GitHub — fraud & churn scoring services']],
- ['kafka','Kf','Kafka','Streaming',[W.target,W.charter,W.hdfc]],
- ['eda','Ev','Event-driven','Streaming',[W.target,W.charter,W.hdfc]],
- ['pubsub','Ps','Pub/Sub','Streaming',[W.target]],
- ['rabbitmq','Rq','RabbitMQ','Streaming',['Résumé: event streaming']],
- ['oracle','Or','Oracle','Databases',[W.target,W.charter,W.hdfc,W.aveva]],
- ['plsql','Pl','PL/SQL','Databases',[W.charter,W.hdfc,W.aveva]],
- ['postgres','Pg','PostgreSQL','Databases',[W.target,W.charter,W.hdfc]],
- ['mongodb','Mg','MongoDB','Databases',[W.charter,W.hdfc]],
- ['bigquery','Bq','BigQuery','Databases',[W.target]],
- ['mysql','My','MySQL','Databases',['Résumé: databases']],
- ['gcp','Gc','GCP','Cloud',[W.target]],
- ['aws','Aw','AWS','Cloud',[W.hdfc,W.aveva]],
- ['azure','Az','Azure','Cloud',[W.charter]],
- ['docker','Dk','Docker','DevOps',[W.target,W.charter,W.hdfc,W.aveva]],
- ['k8s','K8','Kubernetes','DevOps',[W.target,W.charter,W.aveva]],
- ['terraform','Tf','Terraform','DevOps',[W.target]],
- ['gha','Ga','GitHub Actions','DevOps',[W.target,W.charter]],
- ['jenkins','Jk','Jenkins','DevOps',[W.target,W.charter,W.hdfc]],
- ['helm','Hm','Helm','DevOps',['Résumé: CI/CD & DevOps']],
- ['maven','Mv','Maven','DevOps',[W.charter,W.hdfc,W.aveva]],
- ['grafana','Gf','Grafana','DevOps',[W.target]],
- ['junit','Ju','JUnit 5','Testing',[W.target,W.charter,W.hdfc,W.aveva]],
- ['mockito','Mk','Mockito','Testing',[W.target,W.charter,W.hdfc]],
- ['cucumber','Cu','Cucumber','Testing',[W.charter]],
- ['tdd','Td','TDD','Testing',[W.target]],
- ['oauth','Oa','OAuth 2.0 / JWT','Security',[W.charter,W.hdfc]],
- ['sonar','Sq','SonarQube','Security',[W.target,W.charter]],
- ['owasp','Ow','OWASP Top 10','Security',[W.target,W.charter]],
- ['react','Re','React','Frontend',[W.target,W.aveva]],
- ['angular','An','Angular','Frontend',[W.charter,W.hdfc]],
- ['openai','Oi','OpenAI APIs','AI',[W.charter]],
- ['langchain','Lc','LangChain','AI',[W.charter,'GitHub — AI job application agent']],
- ['rag','Rg','RAG','AI',[W.charter]]
+ ['java','Ja','Java','Languages',[[T,'Java 17+ Spring Boot microservices for supply-chain replenishment'],[C,'Transactional services and plugin-style rule-engine components'],[H,'Banking transaction processing services'],[A,'Microservices for an industrial data platform']]],
+ ['kotlin','Kt','Kotlin','Languages',[[C,'Non-blocking services with coroutines and Kotlin DSL'],[H,'Migrated critical services from Java to Kotlin (−30% code)'],[A,'Utility services and data-transformation layers']]],
+ ['sql','Sq','SQL','Languages',[[T,'PostgreSQL and Oracle query tuning for retail workloads'],[C,'Complex Oracle queries for high-volume transactions'],[H,'Report SQL tuned for end-of-day settlement']]],
+ ['python','Py','Python','Languages',[[P,'Credit card fraud detection (Keras, XGBoost, FastAPI)'],[P,'Customer churn prediction with MLflow'],[P,'AI job application agent with LangChain']]],
+ ['typescript','Ts','TypeScript','Languages',[[C,'Angular service layers with RxJS'],[H,'Angular banking interfaces and component libraries'],[A,'React + TypeScript sensor dashboards']]],
+ ['javascript','Js','JavaScript','Languages',[[A,'React components for real-time industrial data views'],[T,'React UIs alongside Spring Boot services']]],
+ ['spring','Sb','Spring Boot','Backend',[[T,'Spring Boot 3+ microservices and REST APIs'],[C,'High-throughput Java and Kotlin Spring Boot APIs'],[H,'Financial services with OAuth 2.0 and JWT'],[A,'Independently deployable microservices']]],
+ ['micro','Ms','Microservices','Backend',[[T,'Distributed supply-chain platform services'],[C,'Pluggable rule-engine modules in a microservices architecture'],[A,'Services with versioned API contracts']]],
+ ['rest','Ra','REST APIs','Backend',[[T,'Integrations with internal platforms and third-party SaaS'],[C,'APIs for large-scale concurrent request volumes'],[A,'Integrations with third-party enterprise systems']]],
+ ['hibernate','Hb','Hibernate','Backend',[[T,'JPA/Hibernate ORM optimization'],[H,'Hibernate ORM in banking services']]],
+ ['swagger','Sw','OpenAPI','Backend',[[T,'Swagger/OpenAPI-documented service contracts']]],
+ ['fastapi','Fa','FastAPI','Backend',[[P,'Fraud scoring API backed by PostgreSQL'],[P,'Real-time churn prediction API']]],
+ ['kafka','Kf','Kafka','Streaming',[[T,'Exactly-once pipelines with dead-letter queues'],[C,'Producer/Consumer/Streams pipelines replacing sync calls'],[H,'Real-time transaction events for monitoring and fraud signals']]],
+ ['eda','Ev','Event-driven','Streaming',[[T,'Asynchronous enterprise data processing'],[C,'Removed synchronous coupling in critical workflows'],[H,'Async notification pipelines']]],
+ ['pubsub','Ps','Pub/Sub','Streaming',[[T,'GCP Pub/Sub for cross-service messaging']]],
+ ['oracle','Or','Oracle','Databases',[[T,'Execution-plan analysis and index redesign'],[C,'Oracle RDBMS tuning to meet SLA targets'],[H,'Schemas, partitioning and settlement batch jobs'],[A,'Queries over large industrial datasets']]],
+ ['plsql','Pl','PL/SQL','Databases',[[H,'Stored-procedure refactoring: −40% report time'],[C,'Stored procedures for high-volume transactions'],[A,'Stored-procedure tuning to meet SLAs']]],
+ ['postgres','Pg','PostgreSQL','Databases',[[T,'Performance tuning for retail operational platforms'],[P,'Transaction store for the fraud-scoring service']]],
+ ['mongodb','Mg','MongoDB','Databases',[[C,'NoSQL stores alongside Oracle under high concurrency'],[H,'Document storage in banking services']]],
+ ['bigquery','Bq','BigQuery','Databases',[[T,'Large-scale operational analytics and reporting']]],
+ ['gcp','Gc','GCP','Cloud',[[T,'GKE, Pub/Sub and BigQuery in production']]],
+ ['aws','Aw','AWS','Cloud',[[H,'Dockerized Java/Kotlin apps deployed on AWS'],[A,'Kubernetes on AWS deployment pipelines']]],
+ ['azure','Az','Azure','Cloud',[[C,'Containerized microservices on Azure AKS']]],
+ ['docker','Dk','Docker','DevOps',[[T,'Containerized services in CI/CD'],[C,'Docker images deployed to AKS'],[P,'Docker Compose for the fraud project; Dockerized churn API']]],
+ ['k8s','K8','Kubernetes','DevOps',[[T,'Kubernetes deployments with automated rollback'],[C,'Horizontally scalable stateless services on AKS'],[A,'Orchestrated services on AWS']]],
+ ['terraform','Tf','Terraform','DevOps',[[T,'Infrastructure as code for cloud resources']]],
+ ['gha','Ga','GitHub Actions','DevOps',[[T,'Pipelines where every commit is tested and SonarQube-validated'],[C,'End-to-end test runs and artifact publishing']]],
+ ['jenkins','Jk','Jenkins','DevOps',[[C,'Maven/Gradle builds and containerized deployments'],[H,'Automated build, test and release workflows']]],
+ ['maven','Mv','Maven','DevOps',[[C,'Builds and artifact publishing'],[H,'Java builds in Jenkins pipelines'],[A,'Test execution on every CI build']]],
+ ['grafana','Gf','Grafana','DevOps',[[T,'Dashboards with Prometheus and OpenTelemetry for root-cause analysis']]],
+ ['junit','Ju','JUnit 5','Testing',[[T,'Unit, integration and contract tests from day one'],[C,'85%+ coverage with JUnit and TestNG'],[H,'80%+ coverage regression suites'],[A,'Tests on every CI build']]],
+ ['mockito','Mk','Mockito','Testing',[[T,'Mocks in TDD-first features'],[C,'Service-layer tests'],[H,'Integration test suites']]],
+ ['cucumber','Cu','Cucumber','Testing',[[C,'BDD contract tests with Gherkin']]],
+ ['tdd','Td','TDD','Testing',[[T,'Daily TDD and pair programming']]],
+ ['oauth','Oa','OAuth 2.0 / JWT','Security',[[C,'OAuth 2.0, JWT, Spring Security and SSO/LDAP'],[H,'Secured customer-facing financial APIs']]],
+ ['sonar','Sn','SonarQube','Security',[[T,'Static analysis on every commit'],[C,'Vulnerability scans in CI']]],
+ ['owasp','Ow','OWASP Top 10','Security',[[T,'OWASP reviews during development and code review'],[C,'OWASP Top 10 audits']]],
+ ['react','Re','React','Frontend',[[A,'Hooks-based dashboards for real-time sensor data'],[T,'Dashboard and monitoring UIs']]],
+ ['angular','An','Angular','Frontend',[[C,'Lazy-loaded modules, route guards and reactive forms'],[H,'Reusable component libraries across banking teams']]],
+ ['openai','Oi','OpenAI APIs','AI',[[C,'Conversational, summarization and extraction workflows'],[P,'One of the LLM back-ends in the job application agent']]],
+ ['langchain','Lc','LangChain','AI',[[C,'LLM workflow orchestration'],[P,'Answers application questions and tailors résumés in the job agent']]],
+ ['rag','Rg','RAG','AI',[[C,'RAG pipelines with vector search and embeddings']]],
+ ['selenium','Se','Selenium','Testing',[[P,'Browser automation in the AI job application agent']]],
+ ['flask','Fl','Flask','Backend',[[P,'Phishing website detection web app']]]
 ];
-SKILLS.forEach(s=>{ if(s[1]==='Sq'&&s[0]==='sonar') s[1]='Sn'; });
 const PROJECTS = [
  {t:'AI Job Agent',k:'LLM automation',d:'A Selenium bot that searches LinkedIn jobs by role, location, seniority and date, then uses LangChain to answer application questions and generate a tailored résumé PDF for each posting.',f:['Multi-LLM: OpenAI, Gemini, Anthropic, Ollama, Hugging Face','Tailored résumé PDF per job','YAML-driven configuration','pytest test suite'],tech:[['python','Python'],['langchain','LangChain'],['selenium','Selenium'],['openai','OpenAI']],gh:'https://github.com/agvs03/Linkedin_Jobs',ui:'agent'},
  {t:'Fraud Detection',k:'Machine learning',d:'Credit-card fraud detection on 284,807 transactions where only 0.172% are fraud, with an ANN benchmarked against boosted models and served from a FastAPI + PostgreSQL scoring service.',f:['SMOTE on training data only','Threshold tuned on validation','XGBoost ROC-AUC 0.982','Docker Compose deployment'],tech:[['python','Python'],['fastapi','FastAPI'],['postgres','PostgreSQL'],['docker','Docker']],gh:'https://github.com/agvs03/financial-fraud-detection',ui:'fraud'},
@@ -630,7 +638,7 @@ const ACH = [
 
 /* ---------------- helpers ---------------- */
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const logoHTML = (k, size) => isBrand(k) ? `<img src="logo-${BRAND[k]}.svg" alt="" width="${size}" height="${size}" loading="lazy">` : (CONCEPT[k] || CONCEPT.micro);
+const logoHTML = (k, size) => isBrand(k) ? `<img src="logo-${BRAND[k]}.svg" alt="" width="${size}" height="${size}" loading="lazy">` : (CONCEPT[k] || (k==='sql'?CONCEPT.plsql:CONCEPT.micro));
 
 /* reveal */
 const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target); } }), {rootMargin:'0px 0px -4% 0px', threshold:.05});
@@ -687,21 +695,23 @@ const swing = $('#swing'), card = $('#idcard');
 let ang = 0, vel = 0, lastX = null, lastT = 0, t0 = performance.now();
 function pend(now){
   const idle = RM ? 0 : Math.sin((now - t0)/1400) * 1.2;
-  vel += (-(ang) * 0.012) ; vel *= 0.94; ang += vel;
+  vel += (-(ang) * 0.012) ; vel *= 0.94; ang = Math.max(-7, Math.min(7, ang + vel));
   swing.style.transform = `rotate(${(ang + idle).toFixed(3)}deg)`;
   requestAnimationFrame(pend);
 }
 if (!RM) requestAnimationFrame(pend);
 $('#about').addEventListener('pointermove', e => {
-  if (RM || e.pointerType !== 'mouse') return;
+  if (RM || e.pointerType !== 'mouse' || card.matches(':hover')) { lastX = e.clientX; lastT = performance.now(); return; }
   const now = performance.now();
   if (lastX !== null) { const v = (e.clientX - lastX) / Math.max(16, now - lastT); vel += Math.max(-1.2, Math.min(1.2, v * 1.6)); }
   lastX = e.clientX; lastT = now;
 });
 const flip = f => { card.classList.toggle('flip', f); card.setAttribute('aria-pressed', card.classList.contains('flip')); };
-card.addEventListener('mouseenter', () => flip(true));
-card.addEventListener('mouseleave', () => flip(false));
-card.addEventListener('click', e => { if (e.pointerType !== 'mouse') flip(!card.classList.contains('flip')); });
+let lastPT = 'mouse';
+card.addEventListener('pointerdown', e => { lastPT = e.pointerType; });
+card.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') flip(true); });
+card.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') flip(false); });
+card.addEventListener('click', e => { if (lastPT !== 'mouse') flip(!card.classList.contains('flip')); lastPT = 'mouse'; });
 card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(!card.classList.contains('flip')); } });
 
 /* ---------------- skills ---------------- */
@@ -726,7 +736,7 @@ function inspect(i, el){
   L.style.setProperty('--glow', (GLOW[s[0]] || '#0d0d0d') + '22');
   L.innerHTML = logoHTML(s[0], 110);
   $('#iName').textContent = s[2]; $('#iFam').textContent = s[3] + (isBrand(s[0]) ? '' : ' · concept');
-  $('#iUsed').innerHTML = s[4].map(u => `<li>${u}</li>`).join('');
+  $('#iUsed').innerHTML = s[4].map(([w,d]) => `<li><b>${w}</b><span>${d}</span></li>`).join('');
 }
 let rT; addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(() => { const wasIn = pt.classList.contains('is-in'); renderTable(); if (wasIn) pt.classList.add('is-in'); }, 200); });
 renderTable(); inspect(0, pt.querySelector('.el'));
