@@ -1,6 +1,6 @@
 # me.arikatla.dev — talking-video portfolio
 
-A second portfolio for **Sudheer Arikatla**: a 3D talking intro video in the hero, then About (swinging ID card), Skills (periodic table), Work, Certifications, Experience, Impact and Contact.
+A second portfolio for **Sudheer Arikatla**, drawn as a system design document on blueprint paper: a context diagram with the 3D talking intro as the central service, a career sequence diagram, a component diagram of skills (each wired to where it was used), a deployment diagram of projects, a certificate trust chain, measured results and an interface spec for contact. Includes a blueprint / whiteprint theme toggle.
 
 - Plain HTML, CSS and vanilla JS in `index.html` (no build step, no runtime CDNs). Fonts are self-hosted `.woff2` files.
 - Hosted on GitHub Pages with the custom domain in `CNAME`.
